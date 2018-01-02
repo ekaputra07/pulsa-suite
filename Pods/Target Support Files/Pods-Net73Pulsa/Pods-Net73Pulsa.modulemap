@@ -1,0 +1,6 @@
+framework module Pods_Net73Pulsa {
+  umbrella header "Pods-Net73Pulsa-umbrella.h"
+
+  export *
+  module * { export * }
+}
