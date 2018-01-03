@@ -33,8 +33,8 @@ class FirstViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
                                   "200,000": 200]
     
     let pembelianKeOptions: [String] = ["1", "2", "3", "4", "5"]
-    let pinTransaksi = "2018"
     
+    var pinTransaksi: String? = nil
     var nominalsKeys: [String] = []
     var nomor: String = ""
     var nominal: Int = 10
@@ -44,6 +44,13 @@ class FirstViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         super.viewDidLoad()
         
         // Do any additional setup after loading the view, typically from a nib.
+        
+        // Register our preferences
+        UserDefaults.standard.register(defaults: [String : Any]())
+        readUserDefaults()
+
+        // Register observer to listen for preferences changes
+        NotificationCenter.default.addObserver(self, selector: #selector(FirstViewController.userDefaultsChanged), name: UserDefaults.didChangeNotification, object: nil)
         
         //sort nominals by its value ASC
         let sortedNominals = nominals.sorted(by: {$0.1 < $1.1})
@@ -63,6 +70,16 @@ class FirstViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // read from preferences
+    func readUserDefaults(){
+        let userDefaults = UserDefaults.standard
+        pinTransaksi = userDefaults.string(forKey: "pin_transaksi")
+    }
+    
+    @objc func userDefaultsChanged(){
+        readUserDefaults()
     }
     
     // Picker view related codes
@@ -118,23 +135,17 @@ class FirstViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     // On BAGIKAN button clicked.
     @IBAction func onKirimButtonClick(_ sender: Any) {
-    
+        print(pinTransaksi ?? "****")
         if (nomorInput.text ?? "").isEmpty || (nominalInput.text ?? "").isEmpty || (pembelianKeInput.text ?? "").isEmpty {
             return
         }
         
-        //remove +62, - from number
-        let cleanedNumber = nomorInput.text!
-            .replacingOccurrences(of: "+62", with: "0")
-            .replacingOccurrences(of: "-", with: "")
-        
-        // trim all whitespaces (first split by whitespaces and join)
-        let trimmedNumber = cleanedNumber.components(separatedBy: .whitespaces).joined(separator: "")
-        
+        //cleanup the phone number
+        let cleanedNumber = Utils.cleanPhoneNumber(for: nomorInput.text!)
         let pk = pembelianKeInput.text == "1" ? "" : " \(pembelianKeInput.text!)"
         
         // format untuk Pulsa 25rb dengan pin 2018 -> "25 08174765123 2018"
-        let messageFormat = "\(nominals[nominalInput.text!]!) \(trimmedNumber) \(pinTransaksi)\(pk)"
+        let messageFormat = "\(nominals[nominalInput.text!]!) \(cleanedNumber) \(pinTransaksi ?? "1234")\(pk)"
         
         let share = UIActivityViewController(activityItems: [messageFormat], applicationActivities: [])
         present(share, animated: true)
