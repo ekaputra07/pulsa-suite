@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import Contacts
+import ContactsUI
 
-class FirstViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class FirstViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, CNContactPickerDelegate {
 
 
     @IBOutlet weak var nomorInput: UINumberInput!
@@ -31,6 +33,7 @@ class FirstViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
                                   "200,000": 200]
     
     let pembelianKeOptions: [String] = ["1", "2", "3", "4", "5"]
+    let pinTransaksi = "2018"
     
     var nominalsKeys: [String] = []
     var nomor: String = ""
@@ -96,16 +99,44 @@ class FirstViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         }
     }
     
-    // On KIRIM button clicked.
-    @IBAction func onKirimButtonClick(_ sender: Any) {
+    // Open contact picker
+    @IBAction func openContactPicker(_ sender: Any) {
+        let contactPicker = CNContactPickerViewController()
+        contactPicker.delegate = self
+        contactPicker.displayedPropertyKeys = [CNContactPhoneNumbersKey]
         
-        if (nomorInput.text?.isEmpty)! || (nominalInput.text?.isEmpty)! || (pembelianKeInput.text?.isEmpty)! {
+        present(contactPicker, animated: true, completion: nil)
+    }
+    
+    func contactPicker(_ picker: CNContactPickerViewController, didSelect contactProperty: CNContactProperty) {
+        //let contact = contactProperty.contact
+        let phoneNumber = contactProperty.value as? CNPhoneNumber
+        
+        //print(contact.givenName)
+        nomorInput.text = phoneNumber?.stringValue
+    }
+    
+    // On BAGIKAN button clicked.
+    @IBAction func onKirimButtonClick(_ sender: Any) {
+    
+        if (nomorInput.text ?? "").isEmpty || (nominalInput.text ?? "").isEmpty || (pembelianKeInput.text ?? "").isEmpty {
             return
         }
-        let pk = pembelianKeInput.text == "1" ? "" : " \(pembelianKeInput.text!)"
-        let smsFormat = "\(nominals[nominalInput.text!]!) \(nomorInput.text!) 2017\(pk)"
         
-        let share = UIActivityViewController(activityItems: [smsFormat], applicationActivities: [])
+        //remove +62, - from number
+        let cleanedNumber = nomorInput.text!
+            .replacingOccurrences(of: "+62", with: "0")
+            .replacingOccurrences(of: "-", with: "")
+        
+        // trim all whitespaces (first split by whitespaces and join)
+        let trimmedNumber = cleanedNumber.components(separatedBy: .whitespaces).joined(separator: "")
+        
+        let pk = pembelianKeInput.text == "1" ? "" : " \(pembelianKeInput.text!)"
+        
+        // format untuk Pulsa 25rb dengan pin 2018 -> "25 08174765123 2018"
+        let messageFormat = "\(nominals[nominalInput.text!]!) \(trimmedNumber) \(pinTransaksi)\(pk)"
+        
+        let share = UIActivityViewController(activityItems: [messageFormat], applicationActivities: [])
         present(share, animated: true)
     }
 }

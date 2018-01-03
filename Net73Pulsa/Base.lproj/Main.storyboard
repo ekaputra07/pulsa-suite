@@ -58,6 +58,9 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nf4-iC-psg">
                                                                 <rect key="frame" x="310" y="0.0" width="25" height="44"/>
                                                                 <state key="normal" image="icons8-find_user"/>
+                                                                <connections>
+                                                                    <action selector="openContactPicker:" destination="9pv-A4-QxB" eventType="touchUpInside" id="cL4-Jz-Z75"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -264,6 +267,22 @@
             </objects>
             <point key="canvasLocation" x="750" y="360"/>
         </scene>
+        <!--KONTAK-->
+        <scene sceneID="fIk-7f-7Vh">
+            <objects>
+                <viewController id="rEn-hE-Gus" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="M4V-Bg-UCf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="Y7P-uL-tT6"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="KONTAK" image="icons8-contacts" id="SQb-Er-q1c"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Zg-5F-Ccj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="674" y="1087"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -276,6 +295,7 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="rEn-hE-Gus" kind="relationship" relationship="viewControllers" id="Zaf-om-PSL"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -285,6 +305,7 @@
     </scenes>
     <resources>
         <image name="icons8-add_user_group" width="25" height="25"/>
+        <image name="icons8-contacts" width="25" height="25"/>
         <image name="icons8-find_user" width="25" height="25"/>
         <image name="icons8-lightning_bolt" width="25" height="25"/>
         <image name="icons8-sim_card" width="25" height="25"/>
