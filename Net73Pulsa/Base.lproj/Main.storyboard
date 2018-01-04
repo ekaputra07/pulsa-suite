@@ -155,6 +155,9 @@
                                                         <state key="normal" title="TAMBAH KONTAK" image="icons8-add_user_group">
                                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="addContact:" destination="9pv-A4-QxB" eventType="touchUpInside" id="BIK-fz-c42"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZuD-n1-xMe">
                                                         <rect key="frame" x="249" y="0.0" width="86" height="25"/>

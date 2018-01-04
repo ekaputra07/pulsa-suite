@@ -6,6 +6,8 @@
 //  Copyright © 2018 Eka Putra. All rights reserved.
 //
 
+import UIKit
+
 class Utils {
     
     // Clean phone number
@@ -14,6 +16,13 @@ class Utils {
         let cleanedNumber = number.replacingOccurrences(of: "+62", with: "0")
                                   .replacingOccurrences(of: "-", with: "")
         return cleanedNumber.components(separatedBy: .whitespaces).joined(separator: "")
+    }
+    
+    // Show UIAlertController with single button
+    static func createSingleActionAlert(title: String, message: String) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        return alert
     }
 }
 

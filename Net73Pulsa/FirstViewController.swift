@@ -10,8 +10,7 @@ import UIKit
 import Contacts
 import ContactsUI
 
-class FirstViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, CNContactPickerDelegate {
-
+class FirstViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, CNContactPickerDelegate, CNContactViewControllerDelegate {
 
     @IBOutlet weak var nomorInput: UINumberInput!
     @IBOutlet weak var nominalInput: UINumberInput!
@@ -135,9 +134,9 @@ class FirstViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     // On BAGIKAN button clicked.
     @IBAction func onKirimButtonClick(_ sender: Any) {
-        print(pinTransaksi ?? "****")
         if (nomorInput.text ?? "").isEmpty || (nominalInput.text ?? "").isEmpty || (pembelianKeInput.text ?? "").isEmpty {
-            return
+            let alert = Utils.createSingleActionAlert(title: "Penting", message: "Nomor HP, nominal dan pembelian tidak boleh kosong.")
+            present(alert, animated: true, completion: nil)
         }
         
         //cleanup the phone number
@@ -150,5 +149,36 @@ class FirstViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         let share = UIActivityViewController(activityItems: [messageFormat], applicationActivities: [])
         present(share, animated: true)
     }
+    
+    @IBAction func addContact(_ sender: Any) {
+        if(nomorInput.text ?? "").isEmpty {
+            let alert = Utils.createSingleActionAlert(title: "Penting", message: "Nomer HP tidak boleh kosong.")
+            present(alert, animated: true, completion: nil)
+        }
+        // Create new contact item
+        let contact = CNMutableContact()
+        contact.phoneNumbers.append(CNLabeledValue(label: "mobile", value: CNPhoneNumber(stringValue: nomorInput.text!)))
+        
+        // create contact view controller and sets its store
+        let contactVC: CNContactViewController = CNContactViewController(forUnknownContact: contact)
+        contactVC.contactStore = CNContactStore()
+        contactVC.delegate = self
+        
+        // wrap it into navigation
+        let nav = UINavigationController(rootViewController: contactVC)
+        
+        // There's a bug in iOS making contact screen missing a navigation bar.
+        // but lets just implement it right now.
+        present(nav, animated: true, completion: nil)
+    }
+    
+    func contactViewController(_ viewController: CNContactViewController, didCompleteWith contact: CNContact?) {
+        viewController.dismiss(animated: true, completion: nil)
+    }
+    
+    func contactViewController(_ viewController: CNContactViewController, shouldPerformDefaultActionFor property: CNContactProperty) -> Bool {
+        return true
+    }
+    
 }
 
