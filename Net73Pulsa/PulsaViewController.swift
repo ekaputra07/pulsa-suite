@@ -10,7 +10,7 @@ import UIKit
 import Contacts
 import ContactsUI
 
-class FirstViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, CNContactPickerDelegate, CNContactViewControllerDelegate {
+class PulsaViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, CNContactPickerDelegate, CNContactViewControllerDelegate {
 
     @IBOutlet weak var nomorInput: UINumberInput!
     @IBOutlet weak var nominalInput: UINumberInput!
@@ -49,7 +49,7 @@ class FirstViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         readUserDefaults()
 
         // Register observer to listen for preferences changes
-        NotificationCenter.default.addObserver(self, selector: #selector(FirstViewController.userDefaultsChanged), name: UserDefaults.didChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(PulsaViewController.userDefaultsChanged), name: UserDefaults.didChangeNotification, object: nil)
         
         //sort nominals by its value ASC
         let sortedNominals = nominals.sorted(by: {$0.1 < $1.1})
