@@ -48,7 +48,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="xy3-UH-dTS">
                                                         <rect key="frame" x="20" y="3" width="335" height="44"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="24" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jd3-uh-8qM" customClass="UINumberInput" customModule="Net73Pulsa" customModuleProvider="target">
+                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="_" textAlignment="natural" minimumFontSize="24" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jd3-uh-8qM" customClass="UINumberInput" customModule="Net73Pulsa" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="301" height="44"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="textColor"/>
@@ -149,10 +149,10 @@
                                                 <rect key="frame" x="20" y="400" width="335" height="25"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W03-RU-rnU">
-                                                        <rect key="frame" x="0.0" y="0.0" width="142" height="25"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="137" height="25"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-4" maxY="0.0"/>
-                                                        <state key="normal" title="TAMBAH KONTAK" image="icons8-add_user_group">
+                                                        <state key="normal" title="SIMPAN KONTAK" image="icons8-add_user_group">
                                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
@@ -271,7 +271,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="awR-wS-pRs">
                                                         <rect key="frame" x="20" y="3" width="335" height="44"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="24" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ZQC-kg-sQm" customClass="UINumberInput" customModule="Net73Pulsa" customModuleProvider="target">
+                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="_" textAlignment="natural" minimumFontSize="24" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ZQC-kg-sQm" customClass="UINumberInput" customModule="Net73Pulsa" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="261" height="44"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="textColor"/>
@@ -281,6 +281,9 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X4e-To-3k2">
                                                                 <rect key="frame" x="273" y="0.0" width="25" height="44"/>
                                                                 <state key="normal" image="icons8-qr_code_filled"/>
+                                                                <connections>
+                                                                    <action selector="scanBarcode:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="q4h-hc-pUy"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T4h-L2-B2g">
                                                                 <rect key="frame" x="310" y="0.0" width="25" height="44"/>
@@ -317,7 +320,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="596-qL-UVn">
                                                         <rect key="frame" x="20" y="3" width="335" height="44"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="24" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bRA-P6-k5g" customClass="UINumberInput" customModule="Net73Pulsa" customModuleProvider="target">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="_" textAlignment="natural" minimumFontSize="24" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bRA-P6-k5g" customClass="UINumberInput" customModule="Net73Pulsa" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="301" height="44"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="textColor"/>
@@ -409,14 +412,15 @@
                                                 <rect key="frame" x="20" y="497" width="335" height="25"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ISN-Yg-UMR">
-                                                        <rect key="frame" x="0.0" y="0.0" width="142" height="25"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="137" height="25"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-4" maxY="0.0"/>
-                                                        <state key="normal" title="TAMBAH KONTAK" image="icons8-add_user_group">
+                                                        <state key="normal" title="SIMPAN KONTAK" image="icons8-add_user_group">
                                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="addContact:" destination="9pv-A4-QxB" eventType="touchUpInside" id="2VL-vO-rtz"/>
+                                                            <action selector="addContact:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="ZIU-Wd-9bY"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Jd-mC-fVZ">

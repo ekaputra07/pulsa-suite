@@ -6,4 +6,5 @@ target 'Net73Pulsa' do
 
   # Pods for Net73Pulsa
   pod 'IQKeyboardManagerSwift'
+  pod 'BarcodeScanner'
 end
