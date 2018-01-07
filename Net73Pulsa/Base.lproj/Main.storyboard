@@ -110,7 +110,7 @@
                                                     <constraint firstAttribute="height" constant="50" id="uLP-cv-jns"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PEMBELIAN KE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4FU-ls-sUh">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRANSAKSI KE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4FU-ls-sUh">
                                                 <rect key="frame" x="20" y="293" width="335" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="6rq-Aw-Aap"/>
@@ -287,6 +287,7 @@
                                                                 <state key="normal" image="icons8-find_user"/>
                                                                 <connections>
                                                                     <action selector="openContactPicker:" destination="9pv-A4-QxB" eventType="touchUpInside" id="CMZ-zH-VCy"/>
+                                                                    <action selector="openMeterNumberPicker:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="na2-4U-X4D"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -328,6 +329,7 @@
                                                                 <state key="normal" image="icons8-find_user"/>
                                                                 <connections>
                                                                     <action selector="openContactPicker:" destination="9pv-A4-QxB" eventType="touchUpInside" id="2dO-oa-HMS"/>
+                                                                    <action selector="openContactPicker:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="4vy-sO-G7M"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -357,7 +359,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ElW-YA-cby">
                                                         <rect key="frame" x="20" y="3" width="335" height="44"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5,000" textAlignment="natural" minimumFontSize="24" translatesAutoresizingMaskIntoConstraints="NO" id="uCH-eX-eYA" customClass="UINumberInput" customModule="Net73Pulsa" customModuleProvider="target">
+                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="20,000" textAlignment="natural" minimumFontSize="24" translatesAutoresizingMaskIntoConstraints="NO" id="uCH-eX-eYA" customClass="UINumberInput" customModule="Net73Pulsa" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="44"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="textColor"/>
@@ -426,12 +428,13 @@
                                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
+                                                            <action selector="doShare:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="wNc-Nz-rwc"/>
                                                             <action selector="onKirimButtonClick:" destination="9pv-A4-QxB" eventType="touchUpInside" id="vUX-Bc-dyz"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PEMBELIAN KE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pex-ql-6m2">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRANSAKSI KE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pex-ql-6m2">
                                                 <rect key="frame" x="20" y="390" width="335" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="9jw-Xo-Wwr"/>
@@ -495,6 +498,12 @@
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="PLN" image="icons8-lightning_bolt" id="cPa-gy-q4n"/>
+                    <connections>
+                        <outlet property="creditInput" destination="uCH-eX-eYA" id="Sin-gz-KmY"/>
+                        <outlet property="meterNumberInput" destination="ZQC-kg-sQm" id="in9-jN-Vob"/>
+                        <outlet property="phoneNumberInput" destination="bRA-P6-k5g" id="flb-XC-mUU"/>
+                        <outlet property="transactionInput" destination="ORf-mr-lSM" id="Jrg-Ur-TgC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
